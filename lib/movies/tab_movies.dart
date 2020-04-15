@@ -1,10 +1,10 @@
+import 'package:ancorafilmes/movies/movies_bloc.dart';
+import 'package:ancorafilmes/widgets/text_empty.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-//import 'package:ancorafilmes/movies/movie.dart';
+import 'package:ancorafilmes/movies/movie.dart';
 //import 'package:ancorafilmes/movies/movie_page.dart';
-import 'package:ancorafilmes/movies/movies_bloc.dart';
 //import 'package:ancorafilmes/utils/nav.dart';
-//import 'package:ancorafilmes/widgets/text_empty.dart';
 import 'package:ancorafilmes/widgets/text_error.dart';
 
 class TabMovies extends StatefulWidget {
@@ -47,16 +47,16 @@ class _TabMoviesState extends State<TabMovies>
           );
         }
 
-        /* List<Movie> movies = snapshot.data;
+        List<Movie> movies = snapshot.data;
 
         return movies.isEmpty
             ? TextEmpty("Nenhum filme.")
-            : _griView(movies, context); */
+            : _griView(movies, context);
       },
     );
   }
 
-  /* _griView(List<Movie> movies, context) {
+  _griView(List<Movie> movies, context) {
     return RefreshIndicator(
       onRefresh: _onRefresh,
       child: GridView.builder(
@@ -68,9 +68,9 @@ class _TabMoviesState extends State<TabMovies>
         },
       ),
     );
-  } */
+  }
 
-  /* _item(List<Movie> movies, index, context) {
+  _item(List<Movie> movies, index, context) {
     Movie m = movies[index];
 
     // Tag para a animação do Hero
@@ -90,11 +90,11 @@ class _TabMoviesState extends State<TabMovies>
         },
       ),
     );
-  } */
+  }
 
-  /* void _onClickMovie(Movie m) {
-    push(context, MoviePage(m));
-  } */
+  void _onClickMovie(Movie m) {
+    //push(context, MoviePage(m));
+  }
 
   Future<void> _onRefresh() {
     return bloc.fetch();

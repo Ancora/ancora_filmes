@@ -1,7 +1,6 @@
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/login/login_page.dart';
-import 'package:ancorafilmes/movies/movies_bloc.dart';
 
 void main() => runApp(MyApp());
 

@@ -118,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, HomePage());
+      //pushReplacement(context, HomePage());
     } else {
       alert(context, "Âncora Filmes", response.msg);
     }
