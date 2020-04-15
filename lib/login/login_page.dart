@@ -1,3 +1,4 @@
+import 'package:ancorafilmes/login/login_api.dart';
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:ancorafilmes/widgets/button.dart';
@@ -13,6 +14,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
+  final _input = LoginInput();
 
   @override
   Widget build(BuildContext context) {
@@ -47,7 +49,7 @@ class _LoginPageState extends State<LoginPage> {
                 validator: (text) {
                   return validateRequired(text, "Informe o login");
                 },
-                /* onSaved: (value) => this._input.login = value, */
+                onSaved: (value) => this._input.login = value,
               ),
             ),
             Container(
@@ -59,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                 validator: (text) {
                   return validateRequired(text, "Informe a senha");
                 },
-                /* onSaved: (value) => this._input.senha = value, */
+                onSaved: (value) => this._input.senha = value,
               ),
             ),
             StreamBuilder<bool>(
@@ -100,7 +102,24 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void _onClickLogin() {}
+  _onClickLogin() async {
+    if (!_formKey.currentState.validate()) {
+      return;
+    }
+
+    // Salva o form
+    _formKey.currentState.save();
+
+    print("Login: ${_input.login}, senha: ${_input.senha}");
+
+    /* final response = await _bloc.login(_input);
+
+    if (response.isOk()) {
+      pushReplacement(context, HomePage());
+    } else {
+      alert(context, "Filmes", response.msg);
+    } */
+  }
 
   void _onClickCadastro() {}
 
