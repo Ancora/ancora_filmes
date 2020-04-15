@@ -1,7 +1,6 @@
-//import 'dart:convert' as convert;
-
-//import 'package:ancorafilmes/utils/response.dart';
-//import 'package:http/http.dart' as http;
+import 'dart:convert' as convert;
+import 'package:ancorafilmes/utils/response.dart';
+import 'package:http/http.dart' as http;
 
 class LoginInput {
   String login;
@@ -25,7 +24,7 @@ class LoginResponse {
 }
 
 class LoginApi {
-  /* static Future<GenericResponse<LoginResponse>> login(LoginInput l) async {
+  static Future<GenericResponse<LoginResponse>> login(LoginInput l) async {
     //await Future.delayed(Duration(milliseconds: 200));
 
     try {
@@ -50,5 +49,5 @@ class LoginApi {
 
       return GenericResponse(false, msg: "Não foi possível fazer o login");
     }
-  } */
+  }
 }

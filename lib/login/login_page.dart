@@ -114,13 +114,13 @@ class _LoginPageState extends State<LoginPage> {
 
     print("Login: ${_input.login}, senha: ${_input.senha}");
 
-    /* final response = await _bloc.login(_input);
+    final response = await _bloc.login(_input);
 
     if (response.isOk()) {
       pushReplacement(context, HomePage());
     } else {
-      alert(context, "Filmes", response.msg);
-    } */
+      alert(context, "Âncora Filmes", response.msg);
+    }
   }
 
   void _onClickCadastro() {}
