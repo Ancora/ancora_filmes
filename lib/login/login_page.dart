@@ -1,8 +1,10 @@
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:ancorafilmes/widgets/button.dart';
+import 'package:ancorafilmes/widgets/link.dart';
 import 'package:ancorafilmes/widgets/text_field.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
 class LoginPage extends StatefulWidget {
   @override
@@ -76,20 +78,21 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
-              /* child: GoogleSignInButton(
-                                    onPressed: _onClickGoogle,
-                                    borderRadius: 22,
-                                  ), */
+              child: GoogleSignInButton(
+                text: 'Acesse com sua conta Google',
+                onPressed: _onClickGoogle,
+                borderRadius: 22,
+              ),
             ),
             Container(
               margin: EdgeInsets.only(top: 0),
-              /* child: Center(
-                                    child: AppLink(
-                                      "Cadastre-se",
-                                      _onClickCadastro,
-                                      color: Colors.white,
-                                    ),
-                                  ), */
+              child: Center(
+                child: AppLink(
+                  "Cadastre-se",
+                  _onClickCadastro,
+                  color: Colors.white,
+                ),
+              ),
             ),
           ],
         ),
@@ -98,4 +101,8 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   void _onClickLogin() {}
+
+  void _onClickCadastro() {}
+
+  void _onClickGoogle() {}
 }
