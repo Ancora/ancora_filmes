@@ -1,5 +1,6 @@
 import 'package:ancorafilmes/login/login_api.dart';
 import 'package:ancorafilmes/login/login_bloc.dart';
+import 'package:ancorafilmes/utils/alert.dart';
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:ancorafilmes/widgets/button.dart';
@@ -67,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
               ),
             ),
             StreamBuilder<bool>(
-              //stream: _bloc.progress.stream,
+              stream: _bloc.progress.stream,
               initialData: false,
               builder: (context, snapshot) {
                 return Container(
@@ -117,7 +118,7 @@ class _LoginPageState extends State<LoginPage> {
     final response = await _bloc.login(_input);
 
     if (response.isOk()) {
-      pushReplacement(context, HomePage());
+      //pushReplacement(context, HomePage());
     } else {
       alert(context, "Âncora Filmes", response.msg);
     }
@@ -127,10 +128,10 @@ class _LoginPageState extends State<LoginPage> {
 
   void _onClickGoogle() {}
 
-  @override
+  /* @override
   void dispose() {
     super.dispose();
 
     _bloc.dispose();
-  }
+  } */
 }
