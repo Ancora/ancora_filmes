@@ -1,5 +1,6 @@
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
+import 'package:ancorafilmes/widgets/button.dart';
 import 'package:ancorafilmes/widgets/text_field.dart';
 import 'package:flutter/material.dart';
 
@@ -59,8 +60,8 @@ class _LoginPageState extends State<LoginPage> {
                 /* onSaved: (value) => this._input.senha = value, */
               ),
             ),
-            /* StreamBuilder<bool>(
-              stream: _bloc.progress.stream,
+            StreamBuilder<bool>(
+              //stream: _bloc.progress.stream,
               initialData: false,
               builder: (context, snapshot) {
                 return Container(
@@ -72,27 +73,29 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 );
               },
-            ), */
+            ),
             Container(
               margin: EdgeInsets.only(top: 16),
               /* child: GoogleSignInButton(
-                onPressed: _onClickGoogle,
-                borderRadius: 22,
-              ), */
+                                    onPressed: _onClickGoogle,
+                                    borderRadius: 22,
+                                  ), */
             ),
             Container(
               margin: EdgeInsets.only(top: 0),
               /* child: Center(
-                child: AppLink(
-                  "Cadastre-se",
-                  _onClickCadastro,
-                  color: Colors.white,
-                ),
-              ), */
+                                    child: AppLink(
+                                      "Cadastre-se",
+                                      _onClickCadastro,
+                                      color: Colors.white,
+                                    ),
+                                  ), */
             ),
           ],
         ),
       ),
     );
   }
+
+  void _onClickLogin() {}
 }
