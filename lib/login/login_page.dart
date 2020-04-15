@@ -1,4 +1,5 @@
 import 'package:ancorafilmes/login/login_api.dart';
+import 'package:ancorafilmes/login/login_bloc.dart';
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:ancorafilmes/widgets/button.dart';
@@ -15,6 +16,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final _input = LoginInput();
+  final _bloc = LoginBloc();
 
   @override
   Widget build(BuildContext context) {
@@ -124,4 +126,11 @@ class _LoginPageState extends State<LoginPage> {
   void _onClickCadastro() {}
 
   void _onClickGoogle() {}
+
+  @override
+  void dispose() {
+    super.dispose();
+
+    _bloc.dispose();
+  }
 }
