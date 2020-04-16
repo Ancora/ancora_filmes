@@ -1,30 +1,34 @@
-import 'package:ancorafilmes/cadastro/cadastro_page.dart';
+import 'package:flutter/material.dart';
+import 'package:ancorafilmes/cadastro/cadastro_bloc.dart';
 import 'package:ancorafilmes/home/home_page.dart';
-import 'package:ancorafilmes/login/login_api.dart';
-import 'package:ancorafilmes/login/login_bloc.dart';
 import 'package:ancorafilmes/utils/alert.dart';
 import 'package:ancorafilmes/utils/nav.dart';
 import 'package:ancorafilmes/utils/validators.dart';
 import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:ancorafilmes/widgets/button.dart';
-import 'package:ancorafilmes/widgets/link.dart';
+import 'package:ancorafilmes/widgets/button_cancel.dart';
 import 'package:ancorafilmes/widgets/text_field.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_auth_buttons/flutter_auth_buttons.dart';
 
-class LoginPage extends StatefulWidget {
+import 'cadastro_api.dart';
+
+class CadastroPage extends StatefulWidget {
   @override
-  _LoginPageState createState() => _LoginPageState();
+  _CadastroPageState createState() => _CadastroPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _CadastroPageState extends State<CadastroPage> {
   final _formKey = GlobalKey<FormState>();
-  final _input = LoginInput();
-  final _bloc = LoginBloc();
+
+  final _input = CadastroInput();
+
+  final _bloc = CadastroBloc();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Cadastrar"),
+      ),
       body: Stack(
         fit: StackFit.expand,
         children: <Widget>[
@@ -43,9 +47,30 @@ class _LoginPageState extends State<LoginPage> {
         child: ListView(
           children: <Widget>[
             Container(
-              padding: EdgeInsets.all(32),
               child: Image.asset("assets/images/logoFilmes.png",
-                  width: 140, height: 140),
+                  width: 120, height: 120),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 16),
+              child: AppText(
+                "Nome",
+                "Digite o seu nome",
+                validator: (text) {
+                  return validateRequired(text, "Informe o nome");
+                },
+                onSaved: (value) => this._input.nome = value,
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.only(top: 16),
+              child: AppText(
+                "Email",
+                "Digite o seu email",
+                validator: (text) {
+                  return validateRequired(text, "Informe o email");
+                },
+                onSaved: (value) => this._input.email = value,
+              ),
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
@@ -77,8 +102,8 @@ class _LoginPageState extends State<LoginPage> {
                 return Container(
                   margin: EdgeInsets.only(top: 16),
                   child: AppButton(
-                    "Login",
-                    _onClickLogin,
+                    "Cadastrar",
+                    _onClickCadastrar,
                     showProgress: snapshot.data,
                   ),
                 );
@@ -86,29 +111,18 @@ class _LoginPageState extends State<LoginPage> {
             ),
             Container(
               margin: EdgeInsets.only(top: 16),
-              child: GoogleSignInButton(
-                text: 'Acesse com sua conta Google',
-                onPressed: _onClickGoogle,
-                borderRadius: 22,
+              child: AppButtonCancel(
+                "Cancelar",
+                _onClickCancelar,
               ),
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 0),
-              child: Center(
-                child: AppLink(
-                  "Cadastre-se",
-                  _onClickCadastro,
-                  color: Colors.white,
-                ),
-              ),
-            ),
+            )
           ],
         ),
       ),
     );
   }
 
-  _onClickLogin() async {
+  _onClickCadastrar() async {
     if (!_formKey.currentState.validate()) {
       return;
     }
@@ -116,10 +130,7 @@ class _LoginPageState extends State<LoginPage> {
     // Salva o form
     _formKey.currentState.save();
 
-    print("Login: ${_input.login}, senha: ${_input.senha}");
-
-    final response = await _bloc.login(_input);
-
+    final response = await _bloc.cadastrar(_input);
     if (response.isOk()) {
       pushReplacement(context, HomePage());
     } else {
@@ -127,11 +138,9 @@ class _LoginPageState extends State<LoginPage> {
     }
   }
 
-  void _onClickCadastro() {
-    push(context, CadastroPage());
+  void _onClickCancelar() {
+    pop(context);
   }
-
-  void _onClickGoogle() {}
 
   /* @override
   void dispose() {

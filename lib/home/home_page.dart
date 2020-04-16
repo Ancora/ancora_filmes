@@ -1,14 +1,12 @@
-//import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
+import 'package:ancorafilmes/favoritos/tab_favoritos.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
-//import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
-//import 'package:ancorafilmes/favoritos/tab_favoritos.dart';
-//import 'package:ancorafilmes/home/drawer.dart';
-//import 'package:ancorafilmes/login/login_page.dart';
+import 'package:ancorafilmes/home/drawer.dart';
+import 'package:ancorafilmes/login/login_page.dart';
 import 'package:ancorafilmes/movies/movies_bloc.dart';
 import 'package:ancorafilmes/movies/tab_movies.dart';
-//import 'package:ancorafilmes/utils/nav.dart';
+import 'package:ancorafilmes/utils/nav.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -60,15 +58,15 @@ class _HomePageState extends State<HomePage>
           controller: tabController,
           children: [
             TabMovies(),
-            //TabFavoritos(),
+            TabFavoritos(),
           ],
         ),
-        //drawer: DrawerMenu(),
+        drawer: DrawerMenu(),
       ),
     );
   }
 
   _onClickLogout() {
-    //pushReplacement(context, LoginPage());
+    pushReplacement(context, LoginPage());
   }
 }

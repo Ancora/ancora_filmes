@@ -8,15 +8,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      blocs: [
-        /* Bloc((i) => MoviesBloc()),
-        Bloc((i) => FavoritosBloc()), */
-      ],
+      blocs: [],
       child: MaterialApp(
         title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+          primarySwatch: Colors.indigo,
         ),
         home: LoginPage(),
       ),
