@@ -1,4 +1,5 @@
 //import 'package:bloc_pattern/bloc_pattern.dart';
+import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 //import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
@@ -30,7 +31,7 @@ class _HomePageState extends State<HomePage>
     return BlocProvider(
       blocs: [
         Bloc((i) => MoviesBloc()),
-        //Bloc((i) => FavoritosBloc()),
+        Bloc((i) => FavoritosBloc()),
       ],
       child: Scaffold(
         appBar: AppBar(
