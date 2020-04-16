@@ -10,7 +10,6 @@ class MyApp extends StatelessWidget {
     return BlocProvider(
       blocs: [],
       child: MaterialApp(
-        title: 'Flutter Demo',
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           primarySwatch: Colors.indigo,

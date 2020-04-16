@@ -45,7 +45,7 @@ class LoginApi {
 
       return GenericResponse(true, msg: r.msg, result: r);
     } catch(error, stacktrace) {
-      //print("Login error: $error - $stacktrace");
+      print("Login error: $error - $stacktrace");
 
       return GenericResponse(false, msg: "Não foi possível fazer o login");
     }

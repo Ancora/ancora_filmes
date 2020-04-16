@@ -16,7 +16,7 @@ class FavoritosBloc extends SimpleBloc<List<Movie>> {
 
       return movies;
     } catch (error, exception) {
-      //print("$error - $exception");
+      print("$error - $exception");
 
       addError("Nenhum filme nos favoritos.");
     }

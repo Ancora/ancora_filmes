@@ -1,5 +1,6 @@
 import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
 import 'package:ancorafilmes/favoritos/tab_favoritos.dart';
+import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/home/drawer.dart';
@@ -54,13 +55,26 @@ class _HomePageState extends State<HomePage>
             ],
           ),
         ),
-        body: TabBarView(
+        body: Stack(
+          fit: StackFit.expand,
+          children: <Widget>[
+            BgLogin(),
+            TabBarView(
+              controller: tabController,
+              children: [
+                TabMovies(),
+                TabFavoritos(),
+              ],
+            ),
+          ],
+        ),
+        /* body: TabBarView(
           controller: tabController,
           children: [
             TabMovies(),
             TabFavoritos(),
           ],
-        ),
+        ), */
         drawer: DrawerMenu(),
       ),
     );
