@@ -2,8 +2,8 @@ import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/favoritos/favoritos_bloc.dart';
 import 'package:ancorafilmes/movies/movie.dart';
-//import 'package:ancorafilmes/movies/movie_page.dart';
-//import 'package:ancorafilmes/utils/nav.dart';
+import 'package:ancorafilmes/movies/movie_page.dart';
+import 'package:ancorafilmes/utils/nav.dart';
 import 'package:ancorafilmes/widgets/text_empty.dart';
 import 'package:ancorafilmes/widgets/text_error.dart';
 
@@ -14,7 +14,6 @@ class TabFavoritos extends StatefulWidget {
 
 class _TabFavoritosState extends State<TabFavoritos>
     with AutomaticKeepAliveClientMixin<TabFavoritos> {
-
   @override
   bool get wantKeepAlive => true;
 
@@ -63,7 +62,7 @@ class _TabFavoritosState extends State<TabFavoritos>
       onRefresh: _onRefresh,
       child: GridView.builder(
         gridDelegate:
-          SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
         itemCount: movies.length,
         itemBuilder: (context, index) {
           return _item(movies, index, context);
@@ -95,7 +94,7 @@ class _TabFavoritosState extends State<TabFavoritos>
   }
 
   void _onClickMovie(Movie m) {
-    //push(context, MoviePage(m));
+    push(context, MoviePage(m));
   }
 
   Future<void> _onRefresh() {

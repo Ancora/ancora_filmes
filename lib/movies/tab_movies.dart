@@ -3,8 +3,8 @@ import 'package:ancorafilmes/widgets/text_empty.dart';
 import 'package:bloc_pattern/bloc_pattern.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/movies/movie.dart';
-//import 'package:ancorafilmes/movies/movie_page.dart';
-//import 'package:ancorafilmes/utils/nav.dart';
+import 'package:ancorafilmes/movies/movie_page.dart';
+import 'package:ancorafilmes/utils/nav.dart';
 import 'package:ancorafilmes/widgets/text_error.dart';
 
 class TabMovies extends StatefulWidget {
@@ -93,7 +93,7 @@ class _TabMoviesState extends State<TabMovies>
   }
 
   void _onClickMovie(Movie m) {
-    //push(context, MoviePage(m));
+    push(context, MoviePage(m));
   }
 
   Future<void> _onRefresh() {
