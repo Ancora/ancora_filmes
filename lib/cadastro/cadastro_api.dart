@@ -23,7 +23,7 @@ class CadastroInput {
 
 class CadastroApi {
   static Future<GenericResponse> cadastrar(CadastroInput c) async {
-    print("> post cadastro $c");
+    //print("> post cadastro $c");
 
     await Future.delayed(Duration(seconds: 2));
 

@@ -24,7 +24,7 @@ class MovieDB {
   initDb() async {
     String databasesPath = await getDatabasesPath();
     String path = join(databasesPath, 'movies.db');
-    print("db $path");
+    //print("db $path");
 
     var db = await openDatabase(path, version: 1, onCreate: _onCreate);
     return db;

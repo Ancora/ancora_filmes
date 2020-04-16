@@ -9,6 +9,7 @@ class MoviesBloc extends SimpleBloc {
       }
       final movies = await MoviesApi.getMovies();
       add(movies);
+      //print('movies_bloc===> $movies');
       return movies;
     } catch (error) {
       addError('Nenhum filme!');

@@ -149,7 +149,7 @@ class _MoviePageState extends State<MoviePage> {
         flex: 1,
         child: InkWell(
           onTap: () {
-            print("Tap > $texto");
+            //print("Tap > $texto");
           },
           child: Container(
             padding: EdgeInsets.only(top: 30, bottom: 30, left: 15, right: 15),

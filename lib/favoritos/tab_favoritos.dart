@@ -48,7 +48,7 @@ class _TabFavoritosState extends State<TabFavoritos>
         }
 
         List<Movie> movies = snapshot.data;
-        print("Movies $movies");
+        //print("Movies $movies");
 
         return movies.isEmpty
             ? TextEmpty("Nenhum filme nos favoritos.")

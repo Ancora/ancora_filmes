@@ -116,7 +116,7 @@ class _LoginPageState extends State<LoginPage> {
     // Salva o form
     _formKey.currentState.save();
 
-    print("Login: ${_input.login}, senha: ${_input.senha}");
+    //print("Login: ${_input.login}, senha: ${_input.senha}");
 
     final response = await _bloc.login(_input);
 
