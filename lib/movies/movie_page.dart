@@ -203,20 +203,15 @@ class _MoviePageState extends State<MoviePage> {
       },
       child: Container(
         margin: EdgeInsets.only(right: 10),
-        width: 36,
-        height: 36,
+        width: 60,
+        height: 60,
         child: StreamBuilder(
             initialData: false,
             stream: _bloc.getFavoritos,
             builder: (context, snapshot) {
               return FlareActor(
-                'assets/animations/favorite.flr',
-                /* Icon(
-                  snapshot.data ? Icons.favorite : Icons.favorite_border,
-                  size: 34,
-                  color: Colors.red,
-                ), */
-                color: snapshot.data ? Colors.red : Colors.white,
+                'assets/animations/Favorite.flr',
+                color: snapshot.data ? Colors.red : Colors.yellow,
                 shouldClip: false,
                 animation: snapshot.data ? 'Favorite' : 'Unfavorite',
               );
