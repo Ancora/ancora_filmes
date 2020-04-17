@@ -1,4 +1,5 @@
 import 'package:ancorafilmes/widgets/bg_login.dart';
+import 'package:flare_flutter/flare_actor.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/movies/movie.dart';
 import 'package:ancorafilmes/movies/movie_bloc.dart';
@@ -46,22 +47,7 @@ class _MoviePageState extends State<MoviePage> {
         pinned: true,
         snap: false,
         actions: <Widget>[
-          IconButton(
-            icon: StreamBuilder<bool>(
-              initialData: false,
-              stream: _bloc.getFavoritos,
-              builder: (context, snapshot) {
-                return Icon(
-                  snapshot.data ? Icons.favorite : Icons.favorite_border,
-                  size: 34,
-                  color: Colors.red,
-                );
-              },
-            ),
-            onPressed: () {
-              _onClickFavoritar();
-            },
-          ),
+          iconFavorito(),
         ],
         flexibleSpace: FlexibleSpaceBar(
           centerTitle: true,
@@ -208,5 +194,52 @@ class _MoviePageState extends State<MoviePage> {
     super.dispose();
 
     _bloc.dispose();
+  }
+
+  iconFavorito() {
+    return InkWell(
+      onTap: () {
+        _onClickFavoritar();
+      },
+      child: Container(
+        margin: EdgeInsets.only(right: 10),
+        width: 36,
+        height: 36,
+        child: StreamBuilder(
+            initialData: false,
+            stream: _bloc.getFavoritos,
+            builder: (context, snapshot) {
+              return FlareActor(
+                'assets/animations/favorite.flr',
+                /* Icon(
+                  snapshot.data ? Icons.favorite : Icons.favorite_border,
+                  size: 34,
+                  color: Colors.red,
+                ), */
+                color: snapshot.data ? Colors.red : Colors.white,
+                shouldClip: false,
+                animation: snapshot.data ? 'Favorite' : 'Unfavorite',
+              );
+            }),
+      ),
+    );
+    /*
+    IconButton(
+            icon: StreamBuilder<bool>(
+              initialData: false,
+              stream: _bloc.getFavoritos,
+              builder: (context, snapshot) {
+                return Icon(
+                  snapshot.data ? Icons.favorite : Icons.favorite_border,
+                  size: 34,
+                  color: Colors.red,
+                );
+              },
+            ),
+            onPressed: () {
+              _onClickFavoritar();
+            },
+          ),
+     */
   }
 }
