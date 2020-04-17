@@ -1,3 +1,4 @@
+import 'package:ancorafilmes/widgets/bg_login.dart';
 import 'package:flutter/material.dart';
 import 'package:ancorafilmes/movies/movie.dart';
 import 'package:ancorafilmes/movies/movie_bloc.dart';
@@ -26,16 +27,24 @@ class _MoviePageState extends State<MoviePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _body(),
+      body: Stack(
+        fit: StackFit.expand,
+        children: <Widget>[
+          BgLogin(),
+          _body(),
+        ],
+      ),
     );
   }
 
   _body() {
     return CustomScrollView(slivers: <Widget>[
       SliverAppBar(
-        backgroundColor: Colors.deepOrange,
+        backgroundColor: Color.fromRGBO(3, 169, 244, 0.5),
         expandedHeight: 350,
-        pinned: false,
+        floating: false,
+        pinned: true,
+        snap: false,
         actions: <Widget>[
           IconButton(
             icon: StreamBuilder<bool>(
@@ -43,9 +52,9 @@ class _MoviePageState extends State<MoviePage> {
               stream: _bloc.getFavoritos,
               builder: (context, snapshot) {
                 return Icon(
-                  Icons.favorite,
+                  snapshot.data ? Icons.favorite : Icons.favorite_border,
                   size: 34,
-                  color: snapshot.data ? Colors.red : Colors.white,
+                  color: Colors.red,
                 );
               },
             ),
@@ -55,8 +64,7 @@ class _MoviePageState extends State<MoviePage> {
           ),
         ],
         flexibleSpace: FlexibleSpaceBar(
-          centerTitle: false,
-          title: Text("${movie.title}"),
+          centerTitle: true,
           background: Container(
             child: Hero(
               tag: movie.tag,
@@ -79,6 +87,18 @@ class _MoviePageState extends State<MoviePage> {
           padding: EdgeInsets.all(20),
           child: Column(
             children: <Widget>[
+              Column(
+                children: <Widget>[
+                  Text(
+                    "${movie.title}",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 22,
+                      color: Colors.lightBlueAccent,
+                    ),
+                  ),
+                ],
+              ),
               Row(
                 children: <Widget>[
                   _card(Icons.favorite, movie.vote_count),
@@ -99,7 +119,7 @@ class _MoviePageState extends State<MoviePage> {
           decoration: BoxDecoration(
             gradient: LinearGradient(
               begin: Alignment.topLeft,
-              colors: [Colors.red, Colors.deepOrange],
+              colors: [Colors.blue, Colors.black],
             ),
           ),
           child: Column(
@@ -108,7 +128,7 @@ class _MoviePageState extends State<MoviePage> {
                 children: <Widget>[
                   Icon(
                     Icons.description,
-                    color: Colors.white,
+                    color: Colors.lightBlueAccent,
                   ),
                   SizedBox(
                     width: 8,
@@ -117,7 +137,7 @@ class _MoviePageState extends State<MoviePage> {
                     "Descrição",
                     style: TextStyle(
                       fontSize: 26,
-                      color: Colors.white,
+                      color: Colors.lightBlueAccent,
                     ),
                   ),
                 ],
@@ -162,14 +182,14 @@ class _MoviePageState extends State<MoviePage> {
               children: <Widget>[
                 Icon(
                   icone,
-                  color: Colors.deepOrange,
+                  color: Colors.yellow,
                 ),
                 SizedBox(
                   height: 16,
                 ),
                 Text(
                   "$texto",
-                  style: TextStyle(fontSize: 18, color: Colors.black),
+                  style: TextStyle(fontSize: 18, color: Colors.lightBlueAccent),
                 )
               ],
             ),
